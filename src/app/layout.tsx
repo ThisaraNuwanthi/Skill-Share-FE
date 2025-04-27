@@ -3,6 +3,7 @@ import type { Metadata } from "next/types";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { BottomNavigation } from "../components/navigation/bottom-navigation";
+import { AiChat } from "../components/landing/ai-chat";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -22,6 +23,7 @@ export default function RootLayout({
       <body className={inter.className}>
         {children} 
         <BottomNavigation />
+        <AiChat />
       </body>
     </html>
   );

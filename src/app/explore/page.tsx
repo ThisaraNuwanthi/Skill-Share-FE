@@ -1,10 +1,10 @@
-import { Header } from "@/src/components/header"
-import { ExploreHeader } from "@/src/components/explore/explore-header"
-import { CategoryTags } from "@/src/components/explore/category-tags"
-import { TrendingSkillsCards } from "@/src/components/explore/trending-skills-cards"
-import { UpcomingSessions } from "@/src/components/explore/upcoming-sessions"
-import { SkillChallenges } from "@/src/components/explore/skill-challenges"
-import { NewUsers } from "@/src/components/explore/new-users"
+import { Header } from "@/src/components/header";
+import { ExploreHeader } from "@/src/components/explore/explore-header";
+import { CategoryTags } from "@/src/components/explore/category-tags";
+import { TrendingSkillsCards } from "@/src/components/explore/trending-skills-cards";
+import { UpcomingSessions } from "@/src/components/explore/upcoming-sessions";
+import { SkillChallenges } from "@/src/components/explore/skill-challenges";
+import { NewUsers } from "@/src/components/explore/new-users";
 
 export default function ExplorePage() {
   return (
@@ -17,7 +17,9 @@ export default function ExplorePage() {
           <TrendingSkillsCards />
         </div>
         <div className="mt-8">
-          <h2 className="mb-4 text-2xl font-bold">Upcoming Learning Sessions</h2>
+          <h2 className="mb-4 text-2xl font-bold">
+            Upcoming Learning Sessions
+          </h2>
           <UpcomingSessions />
         </div>
         <div className="mt-8">
@@ -30,5 +32,5 @@ export default function ExplorePage() {
         </div>
       </main>
     </div>
-  )
+  );
 }

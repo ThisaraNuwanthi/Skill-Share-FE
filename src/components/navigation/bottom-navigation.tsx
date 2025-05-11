@@ -1,5 +1,5 @@
-import Link from "next/link"
-import { Home, Search, PlusCircle, BookOpen, User } from "lucide-react"
+import Link from "next/link";
+import { Home, Search, PlusCircle, BookOpen, User } from "lucide-react";
 
 export function BottomNavigation() {
   return (
@@ -22,5 +22,5 @@ export function BottomNavigation() {
         </Link>
       </div>
     </div>
-  )
+  );
 }

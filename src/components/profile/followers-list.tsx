@@ -1,6 +1,6 @@
-import Image from "next/image"
-import { Button } from "@/src/components/ui/button"
-import { UserPlus } from "lucide-react"
+import Image from "next/image";
+import { Button } from "@/src/components/ui/button";
+import { UserPlus } from "lucide-react";
 
 const followers = [
   {
@@ -38,13 +38,16 @@ const followers = [
     avatar: "/placeholder.svg?height=50&width=50",
     isFollowing: false,
   },
-]
+];
 
 export function FollowersList() {
   return (
     <div className="mt-6 space-y-4">
       {followers.map((follower) => (
-        <div key={follower.id} className="rounded-lg bg-[#6c5ce7] p-4 text-white">
+        <div
+          key={follower.id}
+          className="rounded-lg bg-[#6c5ce7] p-4 text-white"
+        >
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-3">
               <Image
@@ -74,5 +77,5 @@ export function FollowersList() {
         </div>
       ))}
     </div>
-  )
+  );
 }

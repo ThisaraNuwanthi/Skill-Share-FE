@@ -1,4 +1,4 @@
-import { CheckCircle, Circle } from "lucide-react"
+import { CheckCircle, Circle } from "lucide-react";
 
 const plans = [
   {
@@ -19,7 +19,7 @@ const plans = [
       { name: "Landscape Photography Techniques", status: "next" },
     ],
   },
-]
+];
 
 export function LearningPlans() {
   return (
@@ -58,5 +58,5 @@ export function LearningPlans() {
         </div>
       ))}
     </div>
-  )
+  );
 }

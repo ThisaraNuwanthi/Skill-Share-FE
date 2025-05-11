@@ -1,6 +1,6 @@
-import { Input } from "@/src/components/ui/input"
-import { Button } from "@/src/components/ui/button"
-import { Search } from "lucide-react"
+import { Input } from "@/src/components/ui/input";
+import { Button } from "@/src/components/ui/button";
+import { Search } from "lucide-react";
 
 export function ExploreHeader() {
   return (
@@ -10,9 +10,12 @@ export function ExploreHeader() {
         Explore & Discover
       </h1>
       <div className="flex gap-2">
-        <Input placeholder="Find skills, users, posts..." className="flex-grow" />
+        <Input
+          placeholder="Find skills, users, posts..."
+          className="flex-grow"
+        />
         <Button className="bg-[#6c5ce7] hover:bg-[#5b4fc7]">Search</Button>
       </div>
     </div>
-  )
+  );
 }

@@ -1,5 +1,5 @@
-import { CheckCircle, Circle, Edit } from "lucide-react"
-import { Button } from "@/src/components/ui/button"
+import { CheckCircle, Circle, Edit } from "lucide-react";
+import { Button } from "@/src/components/ui/button";
 
 export function FrontendMasteryPlan() {
   return (
@@ -34,7 +34,12 @@ export function FrontendMasteryPlan() {
 
       <div className="flex flex-wrap gap-2">
         <Button variant="outline" className="flex items-center gap-1">
-          <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <svg
+            className="h-4 w-4"
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
             <path
               d="M12 4V20M4 12H20"
               stroke="currentColor"
@@ -46,7 +51,12 @@ export function FrontendMasteryPlan() {
           Update Progress
         </Button>
         <Button variant="outline" className="flex items-center gap-1">
-          <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <svg
+            className="h-4 w-4"
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
             <path
               d="M7 17L17 7M7 7H17V17"
               stroke="currentColor"
@@ -63,5 +73,5 @@ export function FrontendMasteryPlan() {
         </Button>
       </div>
     </div>
-  )
+  );
 }

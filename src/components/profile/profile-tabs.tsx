@@ -1,9 +1,9 @@
-"use client"
-import Link from "next/link"
-import { cn } from "@/src/lib/utils"
+"use client";
+import Link from "next/link";
+import { cn } from "@/src/lib/utils";
 
 interface ProfileTabsProps {
-  activeTab?: string
+  activeTab?: string;
 }
 
 export function ProfileTabs({ activeTab = "posts" }: ProfileTabsProps) {
@@ -45,5 +45,5 @@ export function ProfileTabs({ activeTab = "posts" }: ProfileTabsProps) {
         </Link>
       </div>
     </div>
-  )
+  );
 }

@@ -1,7 +1,7 @@
-import { PlansTabs } from "@/src/components/plans/plans-tabs"
-import { FrontendMasteryPlan } from "@/src/components/plans/frontend-mastery-plan"
-import { CreatePlanForm } from "@/src/components/plans/create-plan-form"
-import { Header } from "@/src/components/header"
+import { PlansTabs } from "@/src/components/plans/plans-tabs";
+import { FrontendMasteryPlan } from "@/src/components/plans/frontend-mastery-plan";
+import { CreatePlanForm } from "@/src/components/plans/create-plan-form";
+import { Header } from "@/src/components/header";
 
 export default function PlansPage() {
   return (
@@ -10,7 +10,9 @@ export default function PlansPage() {
       <main className="container mx-auto px-4 pb-20">
         <div className="flex items-center justify-between py-4">
           <PlansTabs />
-          <button className="rounded-lg bg-[#6c5ce7] px-4 py-2 text-white">New Plan</button>
+          <button className="rounded-lg bg-[#6c5ce7] px-4 py-2 text-white">
+            New Plan
+          </button>
         </div>
 
         <div className="mt-4 rounded-lg border p-6">
@@ -23,5 +25,5 @@ export default function PlansPage() {
         </div>
       </main>
     </div>
-  )
+  );
 }

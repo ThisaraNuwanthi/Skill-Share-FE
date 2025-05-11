@@ -1,7 +1,7 @@
-import { ProfileHeader } from "@/src/components/profile/profile-header"
-import { ProfileTabs } from "@/src/components/profile/profile-tabs"
-import { FollowersList } from "@/src/components/profile/followers-list"
-import { Header } from "@/src/components/header"
+import { ProfileHeader } from "@/src/components/profile/profile-header";
+import { ProfileTabs } from "@/src/components/profile/profile-tabs";
+import { FollowersList } from "@/src/components/profile/followers-list";
+import { Header } from "@/src/components/header";
 
 export default function ProfileFollowersPage() {
   return (
@@ -15,5 +15,5 @@ export default function ProfileFollowersPage() {
         </div>
       </main>
     </div>
-  )
+  );
 }

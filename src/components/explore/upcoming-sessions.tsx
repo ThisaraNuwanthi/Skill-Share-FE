@@ -1,4 +1,4 @@
-import { Calendar } from "lucide-react"
+import { Calendar } from "lucide-react";
 
 const sessions = [
   {
@@ -13,7 +13,7 @@ const sessions = [
     instructor: "Tharushi Fernando",
     date: "Mar 12, 7 PM",
   },
-]
+];
 
 export function UpcomingSessions() {
   return (
@@ -30,5 +30,5 @@ export function UpcomingSessions() {
         </div>
       ))}
     </div>
-  )
+  );
 }

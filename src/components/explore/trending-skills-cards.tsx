@@ -27,7 +27,7 @@ const skills = [
     learners: "620 learners",
     trending: false,
   },
-]
+];
 
 export function TrendingSkillsCards() {
   return (
@@ -45,5 +45,5 @@ export function TrendingSkillsCards() {
         ))}
       </div>
     </div>
-  )
+  );
 }

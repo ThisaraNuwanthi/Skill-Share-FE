@@ -1,6 +1,6 @@
-import { Bell, Settings, User } from "lucide-react"
-import Link from "next/link"
-import { Input } from "../ui/input"
+import { Bell, Settings, User } from "lucide-react";
+import Link from "next/link";
+import { Input } from "../ui/input";
 
 export function DashboardHeader() {
   return (
@@ -23,14 +23,18 @@ export function DashboardHeader() {
           </div>
         </div>
         <div className="mt-4">
-          <Input placeholder="Find skills, users, posts..." className="w-full rounded-full bg-white" />
+          <Input
+            placeholder="Find skills, users, posts..."
+            className="w-full rounded-full bg-white"
+          />
         </div>
         <div className="mt-6 text-center text-white">
           <h1 className="text-2xl font-bold">
-            <span className="mr-2">👋</span> Hello, Thisara! Ready to learn and share?
+            <span className="mr-2">👋</span> Hello, Thisara! Ready to learn and
+            share?
           </h1>
         </div>
       </div>
     </div>
-  )
+  );
 }

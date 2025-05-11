@@ -1,12 +1,12 @@
-"use client"
+"use client";
 
-import { useState } from "react"
-import { Input } from "@/src/components/ui/input"
-import { Button } from "@/src/components/ui/button"
-import { Calendar } from "lucide-react"
+import { useState } from "react";
+import { Input } from "@/src/components/ui/input";
+import { Button } from "@/src/components/ui/button";
+import { Calendar } from "lucide-react";
 
 export function CreatePlanForm() {
-  const [planName, setPlanName] = useState("")
+  const [planName, setPlanName] = useState("");
 
   return (
     <div className="mt-4 space-y-4">
@@ -24,5 +24,5 @@ export function CreatePlanForm() {
 
       <Button className="w-full bg-[#6c5ce7] hover:bg-[#5b4fc7]">Create</Button>
     </div>
-  )
+  );
 }

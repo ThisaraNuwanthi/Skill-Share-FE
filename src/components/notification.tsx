@@ -27,7 +27,7 @@ export default function NotificationTable() {
     const fetchAnnouncements = async (): Promise<void> => {
       try {
         const response = await fetch(
-          `${process.env.NEXT_PUBLIC_API_URL}/announcements`
+          `${process.env.NEXT_PUBLIC_API_URL}/announcements`,
         );
 
         if (response.status === 401 || response.status === 400) {
@@ -42,8 +42,8 @@ export default function NotificationTable() {
 
         if (data.success) {
           const messages = data.data.sort(
-            (a: Notification, b: Notification) => 
-              new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
+            (a: Notification, b: Notification) =>
+              new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime(),
           );
           setNotifications(messages);
         }
@@ -59,7 +59,9 @@ export default function NotificationTable() {
   const formatTime = (dateString: string): string => {
     const date = new Date(dateString);
     const now = new Date();
-    const diffInMinutes = Math.floor((now.getTime() - date.getTime()) / (1000 * 60));
+    const diffInMinutes = Math.floor(
+      (now.getTime() - date.getTime()) / (1000 * 60),
+    );
     const diffInHours = Math.floor(diffInMinutes / 60);
 
     if (diffInMinutes < 60) {

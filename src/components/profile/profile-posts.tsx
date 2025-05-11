@@ -1,6 +1,6 @@
-import Image from "next/image"
-import Link from "next/link"
-import { MessageCircle, Heart } from "lucide-react"
+import Image from "next/image";
+import Link from "next/link";
+import { MessageCircle, Heart } from "lucide-react";
 
 const posts = [
   {
@@ -24,7 +24,7 @@ const posts = [
     comments: 45,
     likes: 150,
   },
-]
+];
 
 export function ProfilePosts() {
   return (
@@ -58,5 +58,5 @@ export function ProfilePosts() {
         </Link>
       ))}
     </div>
-  )
+  );
 }

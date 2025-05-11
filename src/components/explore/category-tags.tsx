@@ -1,4 +1,4 @@
-import Link from "next/link"
+import Link from "next/link";
 
 const categories = [
   { id: "coding", name: "Coding" },
@@ -6,7 +6,7 @@ const categories = [
   { id: "cooking", name: "Cooking" },
   { id: "music", name: "Music" },
   { id: "business", name: "Business" },
-]
+];
 
 export function CategoryTags() {
   return (
@@ -21,5 +21,5 @@ export function CategoryTags() {
         </Link>
       ))}
     </div>
-  )
+  );
 }

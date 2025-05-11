@@ -1,5 +1,5 @@
-import Image from "next/image"
-import Link from "next/link"
+import Image from "next/image";
+import Link from "next/link";
 
 const skills = [
   {
@@ -17,12 +17,14 @@ const skills = [
     title: "Cooking",
     image: "/placeholder.svg?height=200&width=300",
   },
-]
+];
 
 export function TrendingSkills() {
   return (
     <section className="mb-12">
-      <h2 className="mb-6 text-2xl font-bold text-[#6c5ce7]">Trending Skills</h2>
+      <h2 className="mb-6 text-2xl font-bold text-[#6c5ce7]">
+        Trending Skills
+      </h2>
       <div className="grid gap-6 md:grid-cols-3">
         {skills.map((skill) => (
           <Link href={`/skills/${skill.id}`} key={skill.id}>
@@ -42,5 +44,5 @@ export function TrendingSkills() {
         ))}
       </div>
     </section>
-  )
+  );
 }

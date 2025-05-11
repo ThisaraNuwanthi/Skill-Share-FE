@@ -1,33 +1,35 @@
-"use client"
+"use client";
 
-import type React from "react"
+import type React from "react";
 
-import { useState } from "react"
-import Image from "next/image"
-import Link from "next/link"
-import { Button } from "@/src/components/ui/button"
-import { Input } from "@/src/components/ui/input"
-import { Checkbox } from "@/src/components/ui/checkbox"
+import { useState } from "react";
+import Image from "next/image";
+import Link from "next/link";
+import { Button } from "@/src/components/ui/button";
+import { Input } from "@/src/components/ui/input";
+import { Checkbox } from "@/src/components/ui/checkbox";
 
 export default function RegisterPage() {
-  const [username, setUsername] = useState("")
-  const [email, setEmail] = useState("")
-  const [password, setPassword] = useState("")
-  const [confirmPassword, setConfirmPassword] = useState("")
-  const [agreeTerms, setAgreeTerms] = useState(false)
+  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const [agreeTerms, setAgreeTerms] = useState(false);
 
   const handleRegister = (e: React.FormEvent) => {
-    e.preventDefault()
+    e.preventDefault();
     // In a real app, we would handle registration here
-    window.location.href = "/dashboard"
-  }
+    window.location.href = "/dashboard";
+  };
 
   return (
     <div className="flex min-h-screen flex-col md:flex-row">
       <div className="flex w-full items-center justify-center bg-[#f5f6fa] p-8 md:w-1/2">
         <div className="p-8">
           <Link href="/">
-            <h1 className="mb-8 text-4xl font-bold text-[#6c5ce7]">SkillShare</h1>
+            <h1 className="mb-8 text-4xl font-bold text-[#6c5ce7]">
+              SkillShare
+            </h1>
           </Link>
           <Image
             src="/placeholder.svg?height=500&width=600"
@@ -43,10 +45,16 @@ export default function RegisterPage() {
           <h2 className="mb-6 text-center text-3xl font-bold">
             Join Us! Create an Account to Start Sharing & Learning.
           </h2>
-          <Button variant="outline" className="mb-3 w-full bg-[#4CAF50] text-white hover:bg-[#45a049]">
+          <Button
+            variant="outline"
+            className="mb-3 w-full bg-[#4CAF50] text-white hover:bg-[#45a049]"
+          >
             Register with Google
           </Button>
-          <Button variant="outline" className="mb-6 w-full bg-[#5b5fc7] text-white hover:bg-[#4a4da6]">
+          <Button
+            variant="outline"
+            className="mb-6 w-full bg-[#5b5fc7] text-white hover:bg-[#4a4da6]"
+          >
             Register with Facebook
           </Button>
           <div className="relative mb-6">
@@ -54,7 +62,9 @@ export default function RegisterPage() {
               <span className="w-full border-t"></span>
             </div>
             <div className="relative flex justify-center text-xs uppercase">
-              <span className="bg-white px-2 text-muted-foreground">Register with Email & Password</span>
+              <span className="bg-white px-2 text-muted-foreground">
+                Register with Email & Password
+              </span>
             </div>
           </div>
           <form onSubmit={handleRegister}>
@@ -103,7 +113,10 @@ export default function RegisterPage() {
                 Agree to Terms & Conditions
               </label>
             </div>
-            <Button type="submit" className="w-full bg-[#6c5ce7] hover:bg-[#5b4fc7]">
+            <Button
+              type="submit"
+              className="w-full bg-[#6c5ce7] hover:bg-[#5b4fc7]"
+            >
               Login
             </Button>
             <div className="mt-4 text-center text-sm">
@@ -116,5 +129,5 @@ export default function RegisterPage() {
         </div>
       </div>
     </div>
-  )
+  );
 }

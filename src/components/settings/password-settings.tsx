@@ -1,14 +1,14 @@
-"use client"
+"use client";
 
-import { useState } from "react"
-import { Key } from "lucide-react"
-import { Input } from "@/src/components/ui/input"
-import { Button } from "@/src/components/ui/button"
+import { useState } from "react";
+import { Key } from "lucide-react";
+import { Input } from "@/src/components/ui/input";
+import { Button } from "@/src/components/ui/button";
 
 export function PasswordSettings() {
-  const [currentPassword, setCurrentPassword] = useState("")
-  const [newPassword, setNewPassword] = useState("")
-  const [confirmPassword, setConfirmPassword] = useState("")
+  const [currentPassword, setCurrentPassword] = useState("");
+  const [newPassword, setNewPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
 
   return (
     <div className="rounded-lg bg-gray-50 p-6">
@@ -48,8 +48,10 @@ export function PasswordSettings() {
           />
         </div>
 
-        <Button className="bg-[#6c5ce7] hover:bg-[#5b4fc7]">Update Password</Button>
+        <Button className="bg-[#6c5ce7] hover:bg-[#5b4fc7]">
+          Update Password
+        </Button>
       </div>
     </div>
-  )
+  );
 }

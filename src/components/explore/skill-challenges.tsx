@@ -11,7 +11,7 @@ const challenges = [
     title: "Photography Challenge",
     description: "Capture & upload a creative photo daily!",
   },
-]
+];
 
 export function SkillChallenges() {
   return (
@@ -26,5 +26,5 @@ export function SkillChallenges() {
         </div>
       ))}
     </div>
-  )
+  );
 }

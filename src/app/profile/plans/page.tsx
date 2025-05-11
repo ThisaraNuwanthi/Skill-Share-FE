@@ -1,7 +1,7 @@
-import { ProfileHeader } from "@/src/components/profile/profile-header"
-import { ProfileTabs } from "@/src/components/profile/profile-tabs"
-import { LearningPlans } from "@/src/components/profile/learning-plans"
-import { Header } from "@/src/components/header"
+import { ProfileHeader } from "@/src/components/profile/profile-header";
+import { ProfileTabs } from "@/src/components/profile/profile-tabs";
+import { LearningPlans } from "@/src/components/profile/learning-plans";
+import { Header } from "@/src/components/header";
 
 export default function ProfilePlansPage() {
   return (
@@ -15,5 +15,5 @@ export default function ProfilePlansPage() {
         </div>
       </main>
     </div>
-  )
+  );
 }

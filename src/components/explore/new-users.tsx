@@ -1,5 +1,5 @@
-import Image from "next/image"
-import { Button } from "@/src/components/ui/button"
+import Image from "next/image";
+import { Button } from "@/src/components/ui/button";
 
 const users = [
   {
@@ -8,13 +8,16 @@ const users = [
     role: "Frontend Developer & React Enthusiast",
     avatar: "/placeholder.svg?height=50&width=50",
   },
-]
+];
 
 export function NewUsers() {
   return (
     <div className="space-y-4">
       {users.map((user) => (
-        <div key={user.id} className="flex items-center justify-between rounded-lg border p-4">
+        <div
+          key={user.id}
+          className="flex items-center justify-between rounded-lg border p-4"
+        >
           <div className="flex items-center gap-3">
             <Image
               src={user.avatar || "/placeholder.svg"}
@@ -32,5 +35,5 @@ export function NewUsers() {
         </div>
       ))}
     </div>
-  )
+  );
 }

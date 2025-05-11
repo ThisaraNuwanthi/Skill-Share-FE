@@ -1,5 +1,5 @@
-import Link from "next/link"
-import { Zap, BookOpen, PenTool } from "lucide-react"
+import Link from "next/link";
+import { Zap, BookOpen, PenTool } from "lucide-react";
 
 export function DashboardActions() {
   return (
@@ -26,5 +26,5 @@ export function DashboardActions() {
         <span className="font-medium">Create Post</span>
       </Link>
     </div>
-  )
+  );
 }

@@ -1,6 +1,6 @@
-import Image from "next/image"
-import { MapPin, Edit } from "lucide-react"
-import { Button } from "@/src/components/ui/button"
+import Image from "next/image";
+import { MapPin, Edit } from "lucide-react";
+import { Button } from "@/src/components/ui/button";
 
 export function ProfileHeader() {
   return (
@@ -21,12 +21,17 @@ export function ProfileHeader() {
           <span>Dodangoda, Kaluthara, Sri Lanka</span>
         </div>
 
-        <p className="mt-2 text-white">Passionate about coding & sports! Learning new tech every day.🚀</p>
-
-        <p className="mt-2 text-white">Skills: Java | React | Photography | Cooking</p>
+        <p className="mt-2 text-white">
+          Passionate about coding & sports! Learning new tech every day.🚀
+        </p>
 
         <p className="mt-2 text-white">
-          <span className="mr-2">👥 350 Followers</span> | <span className="ml-2">200 Following</span>
+          Skills: Java | React | Photography | Cooking
+        </p>
+
+        <p className="mt-2 text-white">
+          <span className="mr-2">👥 350 Followers</span> |{" "}
+          <span className="ml-2">200 Following</span>
         </p>
 
         <Button variant="outline" className="mt-4 bg-white text-[#6c5ce7]">
@@ -35,5 +40,5 @@ export function ProfileHeader() {
         </Button>
       </div>
     </div>
-  )
+  );
 }

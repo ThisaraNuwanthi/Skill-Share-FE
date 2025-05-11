@@ -1,24 +1,24 @@
-"use client"
+"use client";
 
-import type React from "react"
+import type React from "react";
 
-import { useState } from "react"
-import Image from "next/image"
-import Link from "next/link"
-import { Button } from "@/src/components/ui/button"
-import { Input } from "@/src/components/ui/input"
-import { Checkbox } from "@/src/components/ui/checkbox"
+import { useState } from "react";
+import Image from "next/image";
+import Link from "next/link";
+import { Button } from "@/src/components/ui/button";
+import { Input } from "@/src/components/ui/input";
+import { Checkbox } from "@/src/components/ui/checkbox";
 
 export default function LoginPage() {
-  const [email, setEmail] = useState("")
-  const [password, setPassword] = useState("")
-  const [rememberMe, setRememberMe] = useState(false)
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [rememberMe, setRememberMe] = useState(false);
 
   const handleLogin = (e: React.FormEvent) => {
-    e.preventDefault()
+    e.preventDefault();
     // In a real app, we would handle authentication here
-    window.location.href = "/dashboard"
-  }
+    window.location.href = "/dashboard";
+  };
 
   return (
     <div className="flex min-h-screen flex-col md:flex-row">
@@ -30,10 +30,16 @@ export default function LoginPage() {
         </div>
         <div className="w-full max-w-md rounded-lg border bg-white p-8 shadow-sm">
           <h2 className="mb-6 text-center text-3xl font-bold">Welcome Back!</h2>
-          <Button variant="outline" className="mb-3 w-full bg-[#4CAF50] text-white hover:bg-[#45a049]">
+          <Button
+            variant="outline"
+            className="mb-3 w-full bg-[#4CAF50] text-white hover:bg-[#45a049]"
+          >
             Login with Google
           </Button>
-          <Button variant="outline" className="mb-6 w-full bg-[#5b5fc7] text-white hover:bg-[#4a4da6]">
+          <Button
+            variant="outline"
+            className="mb-6 w-full bg-[#5b5fc7] text-white hover:bg-[#4a4da6]"
+          >
             Login with Facebook
           </Button>
           <div className="relative mb-6">
@@ -68,7 +74,9 @@ export default function LoginPage() {
                 <Checkbox
                   id="remember"
                   checked={rememberMe}
-                  onCheckedChange={(checked) => setRememberMe(checked as boolean)}
+                  onCheckedChange={(checked) =>
+                    setRememberMe(checked as boolean)
+                  }
                 />
                 <label htmlFor="remember" className="text-sm">
                   Remember Me
@@ -78,7 +86,10 @@ export default function LoginPage() {
                 Forgot Password?
               </Link>
             </div>
-            <Button type="submit" className="w-full bg-[#6c5ce7] hover:bg-[#5b4fc7]">
+            <Button
+              type="submit"
+              className="w-full bg-[#6c5ce7] hover:bg-[#5b4fc7]"
+            >
               Login
             </Button>
           </form>
@@ -96,5 +107,5 @@ export default function LoginPage() {
         </div>
       </div>
     </div>
-  )
+  );
 }

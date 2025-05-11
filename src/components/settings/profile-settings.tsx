@@ -1,13 +1,13 @@
-"use client"
+"use client";
 
-import { useState } from "react"
-import { User } from "lucide-react"
-import { Input } from "@/src/components/ui/input"
-import { Button } from "@/src/components/ui/button"
+import { useState } from "react";
+import { User } from "lucide-react";
+import { Input } from "@/src/components/ui/input";
+import { Button } from "@/src/components/ui/button";
 
 export function ProfileSettings() {
-  const [username, setUsername] = useState("Thisara Nuwanthi")
-  const [email, setEmail] = useState("nuwanthi@gmail.com")
+  const [username, setUsername] = useState("Thisara Nuwanthi");
+  const [email, setEmail] = useState("nuwanthi@gmail.com");
 
   return (
     <div className="rounded-lg bg-gray-50 p-6">
@@ -19,16 +19,27 @@ export function ProfileSettings() {
       <div className="space-y-4">
         <div>
           <label className="mb-1 block text-sm font-medium">Username:</label>
-          <Input value={username} onChange={(e) => setUsername(e.target.value)} className="w-full" />
+          <Input
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+            className="w-full"
+          />
         </div>
 
         <div>
           <label className="mb-1 block text-sm font-medium">Email:</label>
-          <Input type="email" value={email} onChange={(e) => setEmail(e.target.value)} className="w-full" />
+          <Input
+            type="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            className="w-full"
+          />
         </div>
 
-        <Button className="bg-[#6c5ce7] hover:bg-[#5b4fc7]">Save Changes</Button>
+        <Button className="bg-[#6c5ce7] hover:bg-[#5b4fc7]">
+          Save Changes
+        </Button>
       </div>
     </div>
-  )
+  );
 }

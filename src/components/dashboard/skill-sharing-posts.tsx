@@ -1,103 +1,67 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { ChevronLeft, ChevronRight, MessageCircle, Heart } from "lucide-react";
 
-const posts = [
-  {
-    id: "1",
-    author: {
-      name: "Tharushi Fernando",
-      avatar: "/placeholder.svg?height=50&width=50",
-      timeAgo: "2 hours ago",
-    },
-    content: {
-      title: "Learned a new trick in Java! 🚀",
-      description: "Check out my code snippet!",
-      image: "/placeholder.svg?height=300&width=400",
-    },
-    engagement: {
-      comments: 12,
-      likes: 25,
-    },
-    trending: true,
-  },
-  {
-    id: "2",
-    author: {
-      name: "Thisara Nuwanthi",
-      avatar: "/placeholder.svg?height=50&width=50",
-      timeAgo: "Yesterday",
-    },
-    content: {
-      title: "Baked my first pizza! 🍕",
-      description: "Here's the recipe I followed!",
-      image: "/placeholder.svg?height=300&width=400",
-    },
-    engagement: {
-      comments: 92,
-      likes: 75,
-    },
-    trending: true,
-  },
-  {
-    id: "3",
-    author: {
-      name: "Tharushi Fernando",
-      avatar: "/placeholder.svg?height=50&width=50",
-      timeAgo: "8 hours ago",
-    },
-    content: {
-      title: "Learned a new trick in Java! 🚀",
-      description: "Check out my code snippet!",
-      image: "/placeholder.svg?height=300&width=400",
-    },
-    engagement: {
-      comments: 12,
-      likes: 25,
-    },
-    trending: true,
-  },
-  {
-    id: "4",
-    author: {
-      name: "Thisara Nuwanthi",
-      avatar: "/placeholder.svg?height=50&width=50",
-      timeAgo: "Yesterday",
-    },
-    content: {
-      title: "Baked my first pizza! 🍕",
-      description: "Here's the recipe I followed!",
-      image: "/placeholder.svg?height=300&width=400",
-    },
-    engagement: {
-      comments: 92,
-      likes: 75,
-    },
-    trending: false,
-  },
-];
+interface Post {
+  id: string;
+  author: {
+    name: string;
+    avatar: string;
+    timeAgo: string;
+  };
+  content: {
+    title: string;
+    description: string;
+    image: string;
+  };
+  engagement: {
+    comments: number;
+    likes: number;
+  };
+  trending: boolean;
+}
 
 export function SkillSharingPosts() {
+  const [posts, setPosts] = useState<Post[]>([]);
   const [currentIndex, setCurrentIndex] = useState(0);
 
+  useEffect(() => {
+    const fetchPosts = async () => {
+      try {
+        const response = await fetch(
+          `${process.env.NEXT_PUBLIC_API_URL}/posts/`
+        );
+        const data: Post[] = await response.json();
+
+        // Sort posts by likes in descending order and take the top 3
+        const sortedPosts = data
+          .sort((a, b) => b.engagement.likes - a.engagement.likes)
+          .slice(0, 3);
+        setPosts(sortedPosts);
+      } catch (error) {
+        console.error("Error fetching posts:", error);
+      }
+    };
+
+    fetchPosts();
+  }, []);
+
   const nextSlide = () => {
-    setCurrentIndex(
-      (prevIndex) => (prevIndex + 1) % Math.ceil(posts.length / 3),
-    );
+    setCurrentIndex((prevIndex) => (prevIndex + 1) % posts.length);
   };
 
   const prevSlide = () => {
     setCurrentIndex(
-      (prevIndex) =>
-        (prevIndex - 1 + Math.ceil(posts.length / 3)) %
-        Math.ceil(posts.length / 3),
+      (prevIndex) => (prevIndex - 1 + posts.length) % posts.length
     );
   };
 
-  const visiblePosts = posts.slice(currentIndex * 3, currentIndex * 3 + 3);
+  if (posts.length === 0) {
+    return <div className="text-center py-6">Loading...</div>;
+  }
 
   return (
     <div className="relative mt-4">
@@ -108,7 +72,7 @@ export function SkillSharingPosts() {
         <ChevronLeft className="h-6 w-6" />
       </button>
       <div className="flex gap-4 overflow-hidden">
-        {visiblePosts.map((post) => (
+        {posts.map((post) => (
           <Link
             href={`/post/${post.id}`}
             key={post.id}
@@ -129,7 +93,7 @@ export function SkillSharingPosts() {
                     Posted {post.author.timeAgo}
                   </p>
                 </div>
-                {post.trending && <span className="ml-auto text-xl">🔥</span>}
+                <span className="ml-auto text-xl">🔥</span>
               </div>
               <Image
                 src={post.content.image || "/placeholder.svg"}

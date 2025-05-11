@@ -1,17 +1,17 @@
-"use client"
+"use client";
 
-import { useState } from "react"
-import Image from "next/image"
-import { Heart, MessageSquare } from "lucide-react"
-import { Button } from "@/src/components/ui/button"
-import { Input } from "@/src/components/ui/input"
+import { useState } from "react";
+import Image from "next/image";
+import { Heart, MessageSquare } from "lucide-react";
+import { Button } from "@/src/components/ui/button";
+import { Input } from "@/src/components/ui/input";
 
 interface PostDetailProps {
-  id: string
+  id: string;
 }
 
 export function PostDetail({ id }: PostDetailProps) {
-  const [comment, setComment] = useState("")
+  const [comment, setComment] = useState("");
 
   // This would be fetched from an API in a real app
   const post = {
@@ -22,7 +22,8 @@ export function PostDetail({ id }: PostDetailProps) {
       timeAgo: "2 hours ago",
     },
     content: {
-      title: "Built a simple REST API with Java Spring Boot! ⚡ Sharing my learning experience",
+      title:
+        "Built a simple REST API with Java Spring Boot! ⚡ Sharing my learning experience",
       tags: ["Java", "SpringBoot", "BackendDevelopment", "Learning"],
       image: "/placeholder.svg?height=400&width=600",
       code: "/placeholder.svg?height=300&width=500",
@@ -45,7 +46,7 @@ export function PostDetail({ id }: PostDetailProps) {
         likes: 74,
       },
     ],
-  }
+  };
 
   return (
     <div className="mx-auto max-w-3xl py-6">
@@ -88,7 +89,10 @@ export function PostDetail({ id }: PostDetailProps) {
 
           <div className="flex flex-wrap gap-2">
             {post.content.tags.map((tag, index) => (
-              <span key={index} className="rounded-full bg-white/20 px-3 py-1 text-sm">
+              <span
+                key={index}
+                className="rounded-full bg-white/20 px-3 py-1 text-sm"
+              >
                 #{tag}
               </span>
             ))}
@@ -133,7 +137,12 @@ export function PostDetail({ id }: PostDetailProps) {
 
       <div className="mt-6 flex justify-between">
         <Button variant="outline" className="bg-[#6c5ce7] text-white">
-          <svg className="mr-2 h-4 w-4" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <svg
+            className="mr-2 h-4 w-4"
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
             <path
               d="M15 5L5 15M5 5H15V15"
               stroke="currentColor"
@@ -146,7 +155,12 @@ export function PostDetail({ id }: PostDetailProps) {
         </Button>
 
         <Button variant="outline" className="bg-red-500 text-white">
-          <svg className="mr-2 h-4 w-4" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <svg
+            className="mr-2 h-4 w-4"
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
             <path
               d="M19 7L18.1327 19.1425C18.0579 20.1891 17.187 21 16.1378 21H7.86224C6.81296 21 5.94208 20.1891 5.86732 19.1425L5 7M10 11V17M14 11V17M15 7V4C15 3.44772 14.5523 3 14 3H10C9.44772 3 9 3.44772 9 4V7M4 7H20"
               stroke="currentColor"
@@ -159,5 +173,5 @@ export function PostDetail({ id }: PostDetailProps) {
         </Button>
       </div>
     </div>
-  )
+  );
 }

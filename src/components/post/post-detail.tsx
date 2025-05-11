@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
 import { Heart, MessageSquare } from "lucide-react";
 import { Button } from "@/src/components/ui/button";
@@ -11,91 +11,82 @@ interface PostDetailProps {
 }
 
 export function PostDetail({ id }: PostDetailProps) {
+  const [post, setPost] = useState<any>(null);
   const [comment, setComment] = useState("");
 
-  // This would be fetched from an API in a real app
-  const post = {
-    id,
-    author: {
-      name: "Pavith Bimsara",
-      avatar: "/placeholder.svg?height=80&width=80",
-      timeAgo: "2 hours ago",
-    },
-    content: {
-      title:
-        "Built a simple REST API with Java Spring Boot! ⚡ Sharing my learning experience",
-      tags: ["Java", "SpringBoot", "BackendDevelopment", "Learning"],
-      image: "/placeholder.svg?height=400&width=600",
-      code: "/placeholder.svg?height=300&width=500",
-    },
-    engagement: {
-      likes: 150,
-      comments: 72,
-    },
-    commentsList: [
-      {
-        id: "1",
-        author: "Dulshan Perera",
-        content: "This is awesome! 🔥 Can you share the repo?",
-        likes: 43,
-      },
-      {
-        id: "2",
-        author: "Tharushi Fernando",
-        content: "Great explanation! Will try this out. 🚀",
-        likes: 74,
-      },
-    ],
-  };
+  useEffect(() => {
+    const fetchPost = async () => {
+      try {
+        const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/posts/${id}`);
+        const data = await response.json();
+        setPost(data);
+      } catch (error) {
+        console.error("Error fetching post:", error);
+      }
+    };
+
+    fetchPost();
+  }, [id]);
+
+  if (!post) {
+    return <div className="text-center py-6">Loading...</div>;
+  }
 
   return (
     <div className="mx-auto max-w-3xl py-6">
       <div className="rounded-lg bg-[#6c5ce7] p-6 text-white">
         <div className="mb-4 flex items-center gap-3">
           <Image
-            src={post.author.avatar || "/placeholder.svg"}
-            alt={post.author.name}
+            src={post.author.avatarr || "/placeholder.svg"}
+            alt={post.author.name || "Unknown"}
             width={60}
             height={60}
             className="rounded-full"
           />
           <div>
-            <h2 className="text-xl font-bold">{post.author.name}</h2>
+            <h2 className="text-xl font-bold">
+              {post.author.name || "Unknown"}
+            </h2>
             <p>
-              Posted {post.author.timeAgo} | #{post.content.tags[0]}
+              Posted {post.author.timeAgo || "Unknown"} |{" "}
+              {post.content.tags && post.content.tags[0]
+                ? `#${post.content.tags[0]}`
+                : "No Tags"}
             </p>
           </div>
           <button className="ml-auto text-2xl">≡</button>
         </div>
 
         <div className="mb-6 space-y-4">
-          <Image
-            src={post.content.code || "/placeholder.svg"}
-            alt="Code screenshot"
-            width={600}
-            height={300}
-            className="w-full rounded-lg"
-          />
+          {post.content.image && (
+            <Image
+              src={post.content.imagee || "/placeholder.svg"}
+              alt="Post image"
+              width={600}
+              height={400}
+              className="w-full rounded-lg"
+            />
+          )}
 
-          <Image
-            src={post.content.image || "/placeholder.svg"}
-            alt="Post image"
-            width={600}
-            height={400}
-            className="w-full rounded-lg"
-          />
+          <h3 className="text-lg font-medium">
+            {post.content.title || "No Title"}
+          </h3>
 
-          <h3 className="text-lg font-medium">{post.content.title}</h3>
+          {post.content.contentBody && (
+            <p className="text-white/90">{post.content.contentBody}</p>
+          )}
 
           <div className="flex flex-wrap gap-2">
-            {post.content.tags.map((tag, index) => (
-              <span
-                key={index}
-                className="rounded-full bg-white/20 px-3 py-1 text-sm"
-              >
-                #{tag}
-              </span>
-            ))}
+            {post.content.tags
+              ? post.content.tags.map((tag: string, index: number) => (
+                  <span
+                    key={index}
+                    className="rounded-full bg-white/20 px-3 py-1 text-sm"
+                  >
+                    #{tag}
+                  </span>
+                ))
+              : "No Tags"}
           </div>
         </div>
 
@@ -112,9 +103,11 @@ export function PostDetail({ id }: PostDetailProps) {
         </div>
 
         <div className="space-y-4">
-          {post.commentsList.map((comment) => (
+          {post.commentsList.map((comment: any) => (
             <div key={comment.id} className="rounded-lg bg-white/10 p-4">
-              <h4 className="font-medium text-white">{comment.author}</h4>
+              <h4 className="font-medium text-white">
+                {comment.author || "Anonymous"}
+              </h4>
               <p className="mt-1">{comment.content}</p>
               <div className="mt-2 flex items-center justify-end">
                 <Button variant="ghost" size="sm" className="text-white">

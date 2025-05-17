@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { ChevronLeft, ChevronRight, MessageCircle, Heart } from "lucide-react";
+import { formatTimeAgo } from "@/src/utils/formatTimeAgo";
 
 interface Post {
   id: string;
@@ -93,7 +94,7 @@ export function SkillSharingPosts() {
                 <div>
                   <p className="font-medium">{post.author.name}</p>
                   <p className="text-sm text-gray-500">
-                    Posted {post.author.timeAgo}
+                    Posted {formatTimeAgo(post.author.timeAgo)}
                   </p>
                 </div>
                 <span className="ml-auto text-xl">🔥</span>

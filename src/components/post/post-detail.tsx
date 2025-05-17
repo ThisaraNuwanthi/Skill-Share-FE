@@ -5,6 +5,7 @@ import Image from "next/image";
 import { Heart, MessageSquare } from "lucide-react";
 import { Button } from "@/src/components/ui/button";
 import { Input } from "@/src/components/ui/input";
+import { formatTimeAgo } from "@/src/utils/formatTimeAgo";
 
 interface PostDetailProps {
   id: string;
@@ -62,7 +63,7 @@ export function PostDetail({ id }: PostDetailProps) {
               {post.author.name || "Unknown"}
             </h2>
             <p>
-              Posted {post.author.timeAgo || "Unknown"} |{" "}
+              Posted {formatTimeAgo(post.author.timeAgo)} |{" "}
               {post.content.tags && post.content.tags[0]
                 ? `#${post.content.tags[0]}`
                 : "No Tags"}

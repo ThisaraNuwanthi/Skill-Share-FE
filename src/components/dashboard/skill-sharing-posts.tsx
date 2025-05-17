@@ -78,7 +78,10 @@ export function SkillSharingPosts() {
             key={post.id}
             className="w-full flex-shrink-0 sm:w-1/2 md:w-1/3"
           >
-            <div className="overflow-hidden rounded-lg border bg-white">
+            <div
+              className="overflow-hidden rounded-lg border bg-white"
+              style={{ width: 380, minHeight: 420 }}
+            >
               <div className="flex items-center gap-2 p-4">
                 <Image
                   src={post.author.avatar || "/placeholder.svg"}
@@ -98,9 +101,10 @@ export function SkillSharingPosts() {
               <Image
                 src={post.content.image || "/placeholder.svg"}
                 alt={post.content.title}
-                width={400}
-                height={300}
-                className="h-48 w-full object-cover"
+                width={350}
+                height={180}
+                className="object-cover"
+                style={{ width: "100%", height: 180 }}
               />
               <div className="p-4">
                 <h3 className="font-medium">{post.content.title}</h3>

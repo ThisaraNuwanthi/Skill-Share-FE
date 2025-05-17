@@ -14,6 +14,11 @@ export function PostDetail({ id }: PostDetailProps) {
   const [post, setPost] = useState<any>(null);
   const [comment, setComment] = useState("");
 
+  const userId =
+    typeof window !== "undefined"
+      ? localStorage.getItem("userId")
+      : null;
+
   useEffect(() => {
     const fetchPost = async () => {
       try {
@@ -33,6 +38,13 @@ export function PostDetail({ id }: PostDetailProps) {
   if (!post) {
     return <div className="text-center py-6">Loading...</div>;
   }
+
+  // Assume post.author.id is the owner's user id
+  const isOwner =
+    userId &&
+    post.author &&
+    post.author.id &&
+    userId === post.author.id;
 
   return (
     <div className="mx-auto max-w-3xl py-6">
@@ -131,41 +143,45 @@ export function PostDetail({ id }: PostDetailProps) {
       </div>
 
       <div className="mt-6 flex justify-between">
-        <Button variant="outline" className="bg-[#6c5ce7] text-white">
-          <svg
-            className="mr-2 h-4 w-4"
-            viewBox="0 0 24 24"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M15 5L5 15M5 5H15V15"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-          </svg>
-          Edit
-        </Button>
+        {isOwner && (
+          <>
+            <Button variant="outline" className="bg-[#6c5ce7] text-white">
+              <svg
+                className="mr-2 h-4 w-4"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M15 5L5 15M5 5H15V15"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
+              Edit
+            </Button>
 
-        <Button variant="outline" className="bg-red-500 text-white">
-          <svg
-            className="mr-2 h-4 w-4"
-            viewBox="0 0 24 24"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M19 7L18.1327 19.1425C18.0579 20.1891 17.187 21 16.1378 21H7.86224C6.81296 21 5.94208 20.1891 5.86732 19.1425L5 7M10 11V17M14 11V17M15 7V4C15 3.44772 14.5523 3 14 3H10C9.44772 3 9 3.44772 9 4V7M4 7H20"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-          </svg>
-          Delete
-        </Button>
+            <Button variant="outline" className="bg-red-500 text-white">
+              <svg
+                className="mr-2 h-4 w-4"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M19 7L18.1327 19.1425C18.0579 20.1891 17.187 21 16.1378 21H7.86224C6.81296 21 5.94208 20.1891 5.86732 19.1425L5 7M10 11V17M14 11V17M15 7V4C15 3.44772 14.5523 3 14 3H10C9.44772 3 9 3.44772 9 4V7M4 7H20"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
+              Delete
+            </Button>
+          </>
+        )}
       </div>
     </div>
   );

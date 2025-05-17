@@ -10,14 +10,33 @@ import { Input } from "@/src/components/ui/input";
 import { Checkbox } from "@/src/components/ui/checkbox";
 
 export default function LoginPage() {
-  const [email, setEmail] = useState("");
+  const [email, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [rememberMe, setRememberMe] = useState(false);
 
-  const handleLogin = (e: React.FormEvent) => {
+  const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
-    // In a real app, we would handle authentication here
-    window.location.href = "/dashboard";
+    try {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/auth/login`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          username: email,
+          password: password,
+        }),
+      });
+      if (!response.ok) {
+        throw new Error("Login failed");
+      }
+      const data = await response.json();
+      localStorage.setItem("userId", data.userId);
+      localStorage.setItem("token", data.token);
+      window.location.href = "/dashboard";
+    } catch (error) {
+      alert("Login failed. Please check your credentials.");
+    }
   };
 
   return (
@@ -53,10 +72,10 @@ export default function LoginPage() {
           <form onSubmit={handleLogin}>
             <div className="mb-4">
               <Input
-                type="email"
-                placeholder="example@gmail.com"
+                type="text"
+                placeholder="username"
                 value={email}
-                onChange={(e) => setEmail(e.target.value)}
+                onChange={(e) => setUsername(e.target.value)}
                 className="w-full"
               />
             </div>

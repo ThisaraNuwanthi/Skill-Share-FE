@@ -1,3 +1,5 @@
+"use client";
+
 import { ProfileHeader } from "@/src/components/profile/profile-header";
 import { ProfileTabs } from "@/src/components/profile/profile-tabs";
 import { ProfilePosts } from "@/src/components/profile/profile-posts";

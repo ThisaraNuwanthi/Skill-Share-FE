@@ -51,7 +51,7 @@ export function PostDetail({ id }: PostDetailProps) {
       <div className="rounded-lg bg-[#6c5ce7] p-6 text-white">
         <div className="mb-4 flex items-center gap-3">
           <Image
-            src={post.author.avatarr || "/placeholder.svg"}
+            src={post.author.avatar || "/placeholder.svg"}
             alt={post.author.name || "Unknown"}
             width={60}
             height={60}
@@ -74,7 +74,7 @@ export function PostDetail({ id }: PostDetailProps) {
         <div className="mb-6 space-y-4">
           {post.content.image && (
             <Image
-              src={post.content.imagee || "/placeholder.svg"}
+              src={post.content.image || "/placeholder.svg"}
               alt="Post image"
               width={600}
               height={400}
@@ -145,23 +145,25 @@ export function PostDetail({ id }: PostDetailProps) {
       <div className="mt-6 flex justify-between">
         {isOwner && (
           <>
-            <Button variant="outline" className="bg-[#6c5ce7] text-white">
-              <svg
-                className="mr-2 h-4 w-4"
-                viewBox="0 0 24 24"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M15 5L5 15M5 5H15V15"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-              </svg>
-              Edit
-            </Button>
+            <a href={`/post/${id}/edit`}>
+              <Button variant="outline" className="bg-[#6c5ce7] text-white">
+                <svg
+                  className="mr-2 h-4 w-4"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M15 5L5 15M5 5H15V15"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+                Edit
+              </Button>
+            </a>
 
             <Button variant="outline" className="bg-red-500 text-white">
               <svg

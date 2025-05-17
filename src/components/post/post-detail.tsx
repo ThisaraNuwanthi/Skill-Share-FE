@@ -6,6 +6,7 @@ import { Heart, MessageSquare } from "lucide-react";
 import { Button } from "@/src/components/ui/button";
 import { Input } from "@/src/components/ui/input";
 import { formatTimeAgo } from "@/src/utils/formatTimeAgo";
+import { LoadingSpinner } from "@/src/components/ui/loading-spinner";
 
 interface PostDetailProps {
   id: string;
@@ -37,7 +38,11 @@ export function PostDetail({ id }: PostDetailProps) {
   }, [id]);
 
   if (!post) {
-    return <div className="text-center py-6">Loading...</div>;
+    return (
+      <div className="text-center py-6">
+        <LoadingSpinner />
+      </div>
+    );
   }
 
   // Assume post.author.id is the owner's user id

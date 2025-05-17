@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { ChevronLeft, ChevronRight, MessageCircle, Heart } from "lucide-react";
 import { formatTimeAgo } from "@/src/utils/formatTimeAgo";
+import { LoadingSpinner } from "@/src/components/ui/loading-spinner";
 
 interface Post {
   id: string;
@@ -61,7 +62,11 @@ export function SkillSharingPosts() {
   };
 
   if (posts.length === 0) {
-    return <div className="text-center py-6">Loading...</div>;
+    return (
+      <div className="text-center py-6">
+        <LoadingSpinner />
+      </div>
+    );
   }
 
   return (

@@ -5,6 +5,7 @@ import { useRouter, useParams } from "next/navigation";
 import { Input } from "@/src/components/ui/input";
 import { Button } from "@/src/components/ui/button";
 import { Header } from "@/src/components/header";
+import { LoadingSpinner } from "@/src/components/ui/loading-spinner";
 
 export default function EditPostPage() {
   const params = useParams();
@@ -94,7 +95,12 @@ export default function EditPostPage() {
     router.push(`/post/${slug}`);
   };
 
-  if (!post) return <div>Loading...</div>;
+  if (!post)
+    return (
+      <div className="flex justify-center items-center min-h-[200px]">
+        <LoadingSpinner />
+      </div>
+    );
 
   return (
     <div className="min-h-screen bg-white">
@@ -131,7 +137,9 @@ export default function EditPostPage() {
                   onChange={handleImageFileChange}
                   disabled={!!imageUrl}
                 />
-                {uploading && <span className="text-sm text-gray-500">Uploading...</span>}
+                {uploading && (
+                  <span className="text-sm text-gray-500">Uploading...</span>
+                )}
               </div>
               {(imageUrl || imageFile) && (
                 <img
@@ -142,7 +150,11 @@ export default function EditPostPage() {
               )}
             </div>
           </div>
-          <Button type="submit" className="w-full bg-[#6c5ce7] text-white" disabled={uploading}>
+          <Button
+            type="submit"
+            className="w-full bg-[#6c5ce7] text-white"
+            disabled={uploading}
+          >
             Save Changes
           </Button>
         </form>

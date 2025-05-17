@@ -2,9 +2,11 @@
 
 import { useEffect, useState } from "react";
 import { CheckCircle, Circle } from "lucide-react";
+import { LoadingSpinner } from "@/src/components/ui/loading-spinner";
 
 export function LearningPlans() {
   const [plans, setPlans] = useState<any[]>([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchPlans = async () => {
@@ -20,6 +22,7 @@ export function LearningPlans() {
       } catch (error) {
         setPlans([]);
       }
+      setLoading(false);
     };
     fetchPlans();
   }, []);
@@ -35,7 +38,11 @@ export function LearningPlans() {
 
   return (
     <div className="mt-6 space-y-6">
-      {plans.length === 0 ? (
+      {loading ? (
+        <div className="text-center py-6">
+          <LoadingSpinner />
+        </div>
+      ) : plans.length === 0 ? (
         <div className="text-center text-gray-500">No learning plans found.</div>
       ) : (
         plans.map((plan) => (
